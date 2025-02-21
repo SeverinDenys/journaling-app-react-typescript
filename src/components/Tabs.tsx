@@ -1,10 +1,15 @@
 import { useState } from 'react'
 
-const Tabs = () => {
+interface Props {
+    onSelectTab: (tab: string) => void
+}
+
+const Tabs = ({onSelectTab}: Props) => {
     const [selectedTab, setSelectedTab] = useState('add')
 
     const handleTogleTab = (selectedTab: string) => {
         setSelectedTab(selectedTab)
+        onSelectTab(selectedTab)
     }
     return (
         <>

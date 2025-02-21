@@ -1,7 +1,15 @@
+import { useState } from 'react'
 import AddJournalForm from './components/AddJournalForm'
 import Tabs from './components/Tabs'
+import JournalList from './components/JournalList'
 
 function App() {
+    const [currentTab, setCurrentTab] = useState('add')
+
+    const handleTab = (selectedTab: string) => {
+        setCurrentTab(selectedTab)
+    }
+
     return (
         <>
             <div className="mx-auto flex w-[640px] flex-col py-4">
@@ -17,9 +25,15 @@ function App() {
                         </p>
                     </header>
 
-                    <Tabs />
-                    <AddJournalForm/>
+                    <Tabs onSelectTab={handleTab}/>
 
+                    <div className="flex flex-col gap-3 rounded-xl bg-gray-200 p-4">
+                        {currentTab === 'add' ? (
+                            <AddJournalForm />
+                        ) : (
+                            <JournalList />
+                        )}
+                    </div>
                 </div>
             </div>
         </>
