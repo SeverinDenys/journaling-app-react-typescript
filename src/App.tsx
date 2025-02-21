@@ -12,10 +12,10 @@ function App() {
 
     return (
         <>
-            <div className="mx-auto flex w-[640px] flex-col py-4">
-                <div className="flex flex-col gap-2 rounded-xl bg-white p-4 text-black">
+            <div className="mx-auto flex min-h-screen w-full max-w-[640px] flex-col px-4 py-4">
+                <div className="flex flex-col gap-2 rounded-xl bg-white p-4 text-black sm:p-6 md:p-8">
                     <header>
-                        <h1 className="mb-4 border-b border-gray-300 pb-3 text-2xl font-bold">
+                        <h1 className="mb-4 border-b border-gray-300 pb-3 text-xl font-bold sm:text-2xl md:text-3xl">
                             Journaling App
                         </h1>
                         <p>
@@ -25,9 +25,9 @@ function App() {
                         </p>
                     </header>
 
-                    <Tabs onSelectTab={handleTab}/>
+                    <Tabs onSelectTab={handleTab} />
 
-                    <div className="flex flex-col gap-3 rounded-xl bg-gray-200 p-4">
+                    <div className="flex flex-col gap-3 rounded-xl bg-gray-200 p-4 sm:p-6">
                         {currentTab === 'add' ? (
                             <AddJournalForm />
                         ) : (

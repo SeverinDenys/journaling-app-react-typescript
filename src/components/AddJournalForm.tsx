@@ -58,84 +58,97 @@ const AddJournalForm = () => {
     }
 
     const openDialog = () => {
-      // document.getElementById('success_modal').showModal()
-      const modal = document.getElementById('success_modal')
-      if(modal instanceof HTMLDialogElement) {
-        modal.showModal()
-      }
+        // document.getElementById('success_modal').showModal()
+        const modal = document.getElementById('success_modal')
+        if (modal instanceof HTMLDialogElement) {
+            modal.showModal()
+        }
     }
 
     return (
         <>
             <dialog id="success_modal" className="modal">
-                <div className="modal-box">
+                <div className="modal-box w-full max-w-sm p-4 md:p-6">
                     <h3 className="text-lg font-bold">Success!</h3>
                     <p className="py-4">
                         The journal entry was successfully saved!
                     </p>
                     <div className="modal-action">
                         <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
+                            <button className="btn w-full">Close</button>
                         </form>
                     </div>
                 </div>
             </dialog>
+
             <form
-                className="flex flex-col gap-3"
+                className="mx-auto flex w-full max-w-lg flex-col gap-3 p-2 md:p-4"
                 onSubmit={handleSubmit(onFormSubmit)}
             >
-                <label className="input input-bordered flex items-center gap-2">
-                    Journal Title
+                {/* Journal Title - now same structure as other labels */}
+                <div className="flex flex-col">
+                    <label
+                        htmlFor="title"
+                        className="form-control w-full text-sm md:text-base"
+                    >
+                        Journal Title
+                    </label>
                     <input
+                        id="title"
                         type="text"
-                        className="grow"
+                        className="input input-bordered w-full text-sm md:text-base"
                         placeholder="Give your journal entry a nice title"
                         {...register('title')}
                     />
-                </label>
-                {errors.title && (
-                    <span className="-mt-3 font-medium text-red-500">
-                        {errors.title.message}
-                    </span>
-                )}
+                    {errors.title && (
+                        <span className="-mt-1 text-sm font-medium text-red-500">
+                            {errors.title.message}
+                        </span>
+                    )}
+                </div>
 
+                {/* Emotion selection */}
                 <div className="flex flex-col">
-                    <label htmlFor="emotions" className="form-control w-full">
+                    <label
+                        htmlFor="emotions"
+                        className="form-control w-full text-sm md:text-base"
+                    >
                         How are you feeling today?
                     </label>
-
                     <select
                         id="emotions"
-                        className="select select-bordered w-full"
+                        className="select select-bordered w-full text-sm md:text-base"
                         {...register('emotion')}
                     >
-                        <option selected>Happy</option>
+                        <option>Happy</option>
                         <option>Neutral</option>
                         <option>Sad</option>
                     </select>
                     {errors.emotion && (
-                        <span className="-mt-3 font-medium text-red-500">
+                        <span className="-mt-1 text-sm font-medium text-red-500">
                             {errors.emotion.message}
                         </span>
                     )}
+                </div>
 
+                {/* Body textarea */}
+                <div className="flex flex-col">
                     <textarea
-                        className="textarea textarea-bordered mt-2"
+                        className="textarea textarea-bordered mt-2 w-full text-sm md:text-base"
                         placeholder="Write something..."
-                        rows={10}
+                        rows={8}
                         {...register('body')}
                     ></textarea>
                     {errors.body && (
-                        <span className="-mt-1 font-medium text-red-500">
+                        <span className="-mt-1 text-sm font-medium text-red-500">
                             {errors.body.message}
                         </span>
                     )}
-
-                    <button className="btn btn-primary mt-3">
-                        Save Journal
-                    </button>
                 </div>
+
+                <button className="btn btn-primary mt-3 w-full py-2 text-sm md:py-3 md:text-base">
+                    Save Journal
+                </button>
             </form>
         </>
     )
