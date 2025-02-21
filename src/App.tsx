@@ -1,4 +1,5 @@
-import Tabs from "./components/Tabs"
+import AddJournalForm from './components/AddJournalForm'
+import Tabs from './components/Tabs'
 
 function App() {
     return (
@@ -16,7 +17,9 @@ function App() {
                         </p>
                     </header>
 
-                 <Tabs/>
+                    <Tabs />
+                    <AddJournalForm/>
+
                 </div>
             </div>
         </>

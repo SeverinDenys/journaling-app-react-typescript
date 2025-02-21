@@ -3,7 +3,7 @@ import { useState } from 'react'
 const Tabs = () => {
     const [selectedTab, setSelectedTab] = useState('add')
 
-    const handleToogleTab = (selectedTab: string) => {
+    const handleTogleTab = (selectedTab: string) => {
         setSelectedTab(selectedTab)
     }
     return (
@@ -12,14 +12,14 @@ const Tabs = () => {
                 <a
                     role="tab"
                     className={`tab ${selectedTab === 'add' && 'tab-active font-bold'}`}
-                    onClick={() => handleToogleTab('add')}
+                    onClick={() => handleTogleTab('add')}
                 >
                     Add Entry
                 </a>
                 <a
                     role="tab"
                     className={`tab ${selectedTab === 'entries' && 'tab-active font-bold'} `}
-                    onClick={() => handleToogleTab('entries')}
+                    onClick={() => handleTogleTab('entries')}
                 >
                     Journal Entries
                 </a>
